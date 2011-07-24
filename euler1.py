@@ -746,3 +746,28 @@ def problem24():
     digits=[i for i in range(10)]
     perms=permutations(digits, 10)
     return reduce(lambda x,y:10*x+y,islice(perms, 1000000-1,1000000).__next__())
+def problem26():
+    #Find the value of d  1000 for which 1/d contains the longest
+    #recurring cycle in its decimal fraction part.
+    from functools import reduce
+    #Expanded version
+    """number=0;
+    digits=0;
+    for i in range(999,5,-2):
+        if isPrime(i):
+            #10^n-1 mod i = 0 for prime i. n=repeated digits
+            n=1
+            while((10**n)-1)%i!=0:
+                n+=1
+            if n>digits:
+                number=i
+                digits=n"""
+    
+    #List comprehension w/ helper function
+    def repeatedDigits(i):
+        n=1
+        while((10**n)-1)%i!=0:
+                n+=1
+        return n
+    return reduce(lambda x, y: x if x[1]>y[1] else y,[[i, repeatedDigits(i)]for i in range(999,5,-2) if isPrime(i)])[0]
+    #return number
