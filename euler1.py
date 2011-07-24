@@ -771,3 +771,18 @@ def problem26():
         return n
     return reduce(lambda x, y: x if x[1]>y[1] else y,[[i, repeatedDigits(i)]for i in range(999,5,-2) if isPrime(i)])[0]
     #return number
+def problem28():
+    n=1001
+    """total=1
+    step=2
+    n=(n-1)//2
+    temp=1; #holder for the top-right value yet calculated
+    for x in range(n):
+        total=total+(temp+step)+(temp+step*2)+(temp+step*3)+(temp+step*4)
+        temp=(temp+step*4)
+        step=step+2
+    return total"""
+    
+    #after rethinking my algorithm,
+    return sum([4*i**2-6*i+6 for i in range(3, n+1, 2)])+1
+    
